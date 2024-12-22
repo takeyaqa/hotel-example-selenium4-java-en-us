@@ -3,7 +3,9 @@
 {
 	"name": "Java",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/java:1-21-bookworm",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
 
 	"features": {
 		"ghcr.io/devcontainers/features/java:1": {
@@ -18,7 +20,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "sudo apt-get update && export DEBIAN_FRONTEND=noninteractive && sudo apt-get install -y chromium",
+	// "postCreateCommand": "java -version",
 
 	// Configure tool-specific properties.
 	"customizations": {
@@ -33,5 +35,7 @@
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
 
-	"runArgs": ["-e REMOTE_CONTAINERS=true"]
+	"containerEnv": {
+		"REMOTE_CONTAINERS": "true"
+	}
 }
