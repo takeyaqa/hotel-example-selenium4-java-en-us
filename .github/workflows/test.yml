@@ -1,12 +1,9 @@
 name: selenium4-java-en-us
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
   schedule:
-    - cron: '0 3 * * *'
+    - cron: '24 18 * * *'
 
 jobs:
   test:
