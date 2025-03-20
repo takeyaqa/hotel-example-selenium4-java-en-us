@@ -31,6 +31,7 @@ public class ReservePage {
   public ReservePage(WebDriver driver) {
     this.driver = driver;
     this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    this.wait.until(ExpectedConditions.titleContains("Reservation"));
     if (this.driver.getTitle() == null || !this.driver.getTitle().startsWith("Reservation")) {
       throw new IllegalStateException("wrong page: " + this.driver.getTitle());
     }

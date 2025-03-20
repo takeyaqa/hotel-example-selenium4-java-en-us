@@ -1,15 +1,22 @@
 package hotel.pages;
 
+import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.Color;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MyPage {
 
   private final WebDriver driver;
 
+  private final WebDriverWait wait;
+
   public MyPage(WebDriver driver) {
     this.driver = driver;
+    this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    this.wait.until(ExpectedConditions.titleContains("MyPage"));
     if (this.driver.getTitle() == null || !this.driver.getTitle().startsWith("MyPage")) {
       throw new IllegalStateException("wrong page: " + this.driver.getTitle());
     }
