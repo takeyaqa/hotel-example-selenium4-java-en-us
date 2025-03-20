@@ -18,6 +18,7 @@ public class ConfirmPage {
   public ConfirmPage(WebDriver driver) {
     this.driver = driver;
     this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    this.wait.until(ExpectedConditions.titleContains("Confirm Reservation"));
     if (this.driver.getTitle() == null || !this.driver.getTitle().startsWith("Confirm Reservation")) {
       throw new IllegalStateException("wrong page: " + this.driver.getTitle());
     }
