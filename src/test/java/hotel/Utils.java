@@ -2,6 +2,8 @@ package hotel;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +12,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Utils {
 
-  public static final String BASE_URL = Objects.requireNonNullElse(System.getenv("BASE_URL"), "https://hotel-example-site.takeyaqa.dev/en-US");
+  public static final String BASE_URL = Objects.requireNonNullElse(System.getenv("BASE_URL"),
+      "https://hotel-example-site.takeyaqa.dev/en-US");
 
   private Utils() {
     throw new AssertionError();
@@ -20,7 +23,14 @@ public class Utils {
     var githubActions = Boolean.parseBoolean(System.getenv("GITHUB_ACTIONS"));
     var remoteContainers = Boolean.parseBoolean(System.getenv("REMOTE_CONTAINERS"));
     var codespaces = Boolean.parseBoolean(System.getenv("CODESPACES"));
+
+    Map<String, Object> chromePrefs = new HashMap<>();
+    chromePrefs.put("credentials_enable_service", false);
+    chromePrefs.put("profile.password_manager_enabled", false);
+    chromePrefs.put("profile.password_manager_leak_detection", false);
+
     var options = new ChromeOptions();
+    options.setExperimentalOption("prefs", chromePrefs);
     if (githubActions) {
       options.addArguments("--headless");
     } else if (remoteContainers || codespaces) {
