@@ -21,8 +21,6 @@ public class Utils {
 
   public static WebDriver createWebDriver() {
     var githubActions = Boolean.parseBoolean(System.getenv("GITHUB_ACTIONS"));
-    var remoteContainers = Boolean.parseBoolean(System.getenv("REMOTE_CONTAINERS"));
-    var codespaces = Boolean.parseBoolean(System.getenv("CODESPACES"));
 
     Map<String, Object> chromePrefs = new HashMap<>();
     chromePrefs.put("credentials_enable_service", false);
@@ -33,8 +31,6 @@ public class Utils {
     options.setExperimentalOption("prefs", chromePrefs);
     if (githubActions) {
       options.addArguments("--headless");
-    } else if (remoteContainers || codespaces) {
-      options.addArguments("--headless", "--no-sandbox");
     }
     var driver = new ChromeDriver(options);
     driver.manage().window().setSize(new Dimension(1920, 1080));
