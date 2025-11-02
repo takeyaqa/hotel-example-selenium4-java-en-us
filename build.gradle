@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
     // Selenium-java 4
-    testImplementation('org.seleniumhq.selenium:selenium-java:4.36.0')
+    testImplementation('org.seleniumhq.selenium:selenium-java:4.38.0')
 
     // Use JUnit Jupiter for testing.
     testImplementation(platform('org.junit:junit-bom:6.0.0'))
