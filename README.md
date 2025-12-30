@@ -1,3 +1,6 @@
+> [!CAUTION]
+> **This project has been archived and is no longer maintained. It is provided for reference only.**
+
 # hotel-example-selenium4-java-en-us
 
 [![selenium4-java-en-us](https://github.com/takeyaqa/hotel-example-selenium4-java-en-us/actions/workflows/test.yml/badge.svg)](https://github.com/takeyaqa/hotel-example-selenium4-java-en-us/actions/workflows/test.yml)
